@@ -68,6 +68,25 @@ function divide(a, b) {
   return a / b;
 }
 
+function modulo(a, b) {
+  if (b === 0) {
+    throw new Error('modulo by zero');
+  }
+  return a % b;
+}
+
+function power(base, exponent) {
+  // Use Math.pow for compatibility; the ** operator is also valid in modern Node.js
+  return Math.pow(base, exponent);
+}
+
+function squareRoot(n) {
+  if (n < 0) {
+    throw new Error('square root of negative number');
+  }
+  return Math.sqrt(n);
+}
+
 function main(argv) {
   const parsed = parseArgs(argv);
   if (!parsed) {
@@ -129,7 +148,7 @@ function main(argv) {
   console.log(result);
 }
 
-module.exports = { add, subtract, multiply, divide };
+module.exports = { add, subtract, multiply, divide, modulo, power, squareRoot };
 
 if (require.main === module) {
   main(process.argv);

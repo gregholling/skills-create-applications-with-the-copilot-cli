@@ -48,6 +48,26 @@ function resolveOperator(op) {
   return map[op.toLowerCase()] || null;
 }
 
+// Exportable operation functions for unit testing
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function divide(a, b) {
+  if (b === 0) {
+    throw new Error('division by zero');
+  }
+  return a / b;
+}
+
 function main(argv) {
   const parsed = parseArgs(argv);
   if (!parsed) {
@@ -108,6 +128,8 @@ function main(argv) {
   // Print result to stdout
   console.log(result);
 }
+
+module.exports = { add, subtract, multiply, divide };
 
 if (require.main === module) {
   main(process.argv);
